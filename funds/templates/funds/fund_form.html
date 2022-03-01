@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Add Fund
+{% endblock title %}
+
+{% block content %}
+<div class="container col-md-10 offset-md-1 mt-3">
+    <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+
+        <div class="row mt-2 mb-2 mt-2">
+            <div class="col-md-8">{{fund.name|as_crispy_field}}</div>
+        </div>
+        
+        <div class="row mt-2 mb-2 mt-2">
+            <div class="col-md-4">{{fund.short_name|as_crispy_field}}</div>
+            <div class="col-md-4">{{fund.structure|as_crispy_field}}</div>
+        </div>
+
+        <div class="row mt-2 mb-2 mt-2">
+            <div class="col-md-8">{{fund.objective|as_crispy_field}}</div>
+        </div>
+
+        <div class="row mt-2 mb-2">
+            <div class="col-md-3">{{fund.f_currency|as_crispy_field}}</div>
+            <div class="col-md-3">{{fund.target_commitment|as_crispy_field}}</div>
+        </div>
+
+        <div class="row mt-2 mb-2">
+            <div class="col-md-3">{{fund.investment_period|as_crispy_field}}</div>
+            <div class="col-md-3">{{fund.divestment_period|as_crispy_field}}</div>
+        </div>
+
+        <div class="row mt-4 mb-2">
+            <div class="col-md-7">
+                <button type="submit" value=" Submit" class="btn btn-success btn-md col-md-3"><i class="fas fa-save"></i>  Sumbit</button>
+                <a href="{% url 'funds:funds' %}" class="btn btn-secondary btn-block btn-md"><i class="fas fa-stream"></i> Back to funds</a> 
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

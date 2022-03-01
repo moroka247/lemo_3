@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+Funds home
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-8"> <h5><b>FUNDS</b></h5></div>
+    
+        <div align="right" class="col-md-4">        
+            <a href="{% url 'funds:fund_form' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-plus"> Add New</i>
+            </a>
+            <a href="{% url 'home:home' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-home"> Home</i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container shadow">
+
+    <table class="table table-borderless table-hover" cellspacing="1px">
+        <thead class="border-bottom">
+            <tr class="" style="font-weight:bold">
+                <td>Fund name</td>
+                <td align="center">Fund structure</td>
+                <td align="right">Committed Capital</td>
+                <td align="right">Drawn Down</td>
+                <td align="right">Undrawn</td>
+                <td align="right">Distributions</td>
+                <td align="center">Portf. Count</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% if funds %}
+            {% for fund in funds %}
+                <tr class="border-bottom" onclick="window.location='{{fund.get_absolute_url}}';"  style="cursor: pointer;">
+                    <td >{{fund.name}}</td>
+                    <td align="center">{{fund.structure}}</td>
+                    <td align="right">{{fund.commitment}}</td>
+                    <td align="right">{{fund.drawn_capital}}</td>
+                    <td align="right">{{fund.undrawn_capital}}</td>
+                    <td align="right">{{fund.distributions}}</td>
+                    <td align="center">{{fund.portfolio_count}}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <td>There are no funds to display</td>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

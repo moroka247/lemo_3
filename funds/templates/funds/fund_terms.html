@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ fund.name}}
+{% endblock title %}
+
+{% block content %}
+
+<table class="table table-borderless table-hover" cellspacing="1px">
+    <thead>
+        <td align="right">
+            <a href="{% url 'funds:fund_form' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-plus"> Add New</i>
+            </a>
+            <a href="{% url 'funds:funds' %}" class="btn btn-outline-success" style="height:30px;width:200px;padding:2px">
+                <i class="fas fa-step-backward"> Back to funds</i>
+            </a>
+        </td>
+    </thead>
+</table>
+
+<h5>{{fund}}</h5>
+<hr>
+<ul class="nav nav-tabs">
+    <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Overview</a></li>
+    <li class="nav-item"><a class="nav-link active" href="{% url 'funds:fund_terms' %}">Salient Terms</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Investors</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Fund Status</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Performance</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Operations</a></li>
+</ul>
+<br>
+
+<div class="container shadow">
+    <table class="">
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr class="border-bottom"><td class="col-md-6">Fund Name</td><td class="col-md-12">{{fund.name}}</td></tr>
+            <tr class="border-bottom"><td>Fund Short Name</td><td>{{fund.short_name}}</td></tr>
+            <tr class="border-bottom"><td>Fund Objective</td><td vertical-align: top>{{fund.objective}}</td></tr>
+            <tr class="border-bottom"><td>Fund Life</td><td>{{fund.life}}</td></tr>
+            <tr class="border-bottom"><td>Investment Period</td><td>{{fund.investment_period}}</td></tr>
+            <tr class="border-bottom"><td>Divestment Period</td><td>{{fund.divestment_period}}</td></tr>
+            <tr class="border-bottom"><td>Target commitment</td><td>{{fund.target_commitment}}</td></tr>
+            <tr class="border-bottom"><td>Committed Capital</td><td><a href="#">{{fund.commitment}}</a></td></tr>
+            <tr class="border-bottom"><td>Drawn Capital</td><td><a href="#">{{fund.drawn_capital}}</a></td></tr>
+            <tr class="border-bottom"><td>Undrawn Commitment</td><td>{{fund.undrawn_capital}}</td></tr>
+            <tr class="border-bottom"><td>Distributions</td><td><a href="#">{{fund.distributions}}</a></td></tr>
+            <tr class="border-bottom"><td>Number of portfolio investments</td><td><a href="#">{{fund.portfolio_count}}</a></td></tr>
+            <tr class="border-bottom"><td>Management Fee % - <i>during Investment Period</i></td><td>{{fund.investment_period}}</td></tr>
+            <tr class="border-bottom"><td>Management Fee Basis - <i>during Investment Period</i></td><td>{{fund.name}}</td></tr>
+            <tr class="border-bottom"><td>Management Fee % - <i>during Divestment Period</i></td><td>{{fund.investment_period}}</td></tr>
+            <tr class="border-bottom"><td>Management Fee Basis - <i>during Divestment Period</i></td><td>{{fund.name}}</td></tr>      
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

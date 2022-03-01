@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+Investment details
+{% endblock title %}
+
+{% block content %}
+
+<table class="table table-borderless table-hover" cellspacing="1px">
+    <thead>
+        <td align="right">
+            <a href="{% url 'investments:investments' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-plus"> Add New</i>
+            </a>
+            <a href="{% url 'investments:investments' %}" class="btn btn-outline-success" style="height:30px;width:200px;padding:2px">
+                <i class="fas fa-step-backward"> Back to investments</i>
+            </a>
+        </td>
+    </thead>
+</table>
+
+<h5>{{investment}}</h5>
+<hr>
+<ul class="nav nav-tabs">
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Overview</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Company description</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Shareholding structure</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Financial information</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Cash flows</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Reporting</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Valuation</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Documents</a></li>
+</ul>
+<br>
+
+
+{% endblock content %}

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}
+Investor details
+{% endblock title %}
+
+{% block content %}
+
+<table class="table table-borderless table-hover" cellspacing="1px">
+    <thead>
+        <td align="right">
+            <a href="{% url 'investors:investor_form' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-plus"> Add New</i>
+            </a>
+            <a href="{% url 'investors:investors' %}" class="btn btn-outline-success" style="height:30px;width:200px;padding:2px">
+                <i class="fas fa-step-backward"> Back to investors</i>
+            </a>
+        </td>
+    </thead>
+</table>
+
+<h5>{{investor}}</h5>
+<hr>
+
+<b>
+<ul class="nav nav-tabs">
+    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#details" data-bs-toggle="tab" role="tab">Investor Details</a></li>
+    <li class="nav-item"><a class="nav-link" href="#funds" data-bs-toggle="tab" role="tab">Fund Commitments</a></li>
+    <li class="nav-item"><a class="nav-link" href="#cash_flows" data-bs-toggle="tab" role="tab">Investor Cash Flows</a></li>
+    <li class="nav-item"><a class="nav-link" href="#mailing_lists" data-bs-toggle="tab" role="tab">Mailing Lists</a></li>
+    <li class="nav-item"><a class="nav-link" href="#documents" data-bs-toggle="tab" role="tab">Documents</a></li>
+</ul>
+</b>
+
+<div class="tab-content mt-3">
+
+    <div role="tabpanel" class="tab-pane fade show active" id="details">
+
+        <table class="" style="width:100%">
+            <colgroup>
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 70%;">
+            </colgroup>
+
+            <thead class="table-header">
+                
+            </thead>
+            <tbody>
+                <tr class="border-bottom"><td>Full Name</td><td>{{investor.name}}</td></tr>
+                <tr class="border-bottom"><td>Short Name</td><td>{{investor.short_name}}</td></tr>
+                <tr class="border-bottom"><td>Investor Category</td><td>{{investor.category}}</td></tr> 
+                <tr class="border-bottom"><td>Registration Number</td><td vertical-align: top>{{investor.reg_no}}</td></tr>
+                <tr class="border-bottom"><td>Business Address</td><td>{{investor.address}}<br>{{investor.city}}<br>{{investor.post_code}}</td></tr>
+                <tr class="border-bottom"><td>Key Contact Person</td><td>{{investor.key_contact}}</td></tr> 
+                <tr class="border-bottom"><td>Contact Phone Number</td><td>{{investor.phone}}</td></tr>
+                <tr class="border-bottom"><td>Email Address</td><td>{{investor.contact_email}}</td></tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="funds">
+        <h5>Fund Commitments</h5>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="cash_flows">
+        <h5>Cash Flows</h5>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="mailing_lists">
+    
+        <div class="card card-body col-md-12 shadow">
+            <a href='#'></a>
+            <table class="table">
+                <colgroup>
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                    <col span="1" style="width: 10%;">
+                </colgroup>
+
+                <thead>
+                    <th>Contact Name</th>
+                    <th style="text-align:center">Email Address</th>
+                    <th style="text-align:center">Phone Number</th>
+                    <th style="text-align:center">Main Contact</th>
+                    <th style="text-align:center">Advisory Board</th>
+                    <th style="text-align:center">Investment Committee</th>
+                    <th style="text-align:center">Reports</th>
+                    <th style="text-align:center"></th>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                        <tr onclick="window.location='#';"  style="cursor: pointer;">
+                        <td>{{contact.name}}</td>
+                        <td align="center">{{contact.email}}</td>
+                        <td align="center">{{contact.phone}}</td>
+                        <td align="center">{{contact.main_contact}}</td>
+                        <td align="center">{{contact.adv_board_rep}}</td>
+                        <td align="center">{{contact.inv_comm_rep}}</td>
+                        <td align="center">{{contact.reports}}</td>
+                        <td align="center">
+                            <a href="#EditContact" data-bs-toggle="modal" role="modal" data-target="#EditContact">Edit</a>
+                            <div class="modal" tabindex="-1" id="EditContact">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Investor Contact</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{inv_contact}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        
+                        </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="documents">
+        <h5>Documents</h5>
+    </div>
+
+</div>
+
+
+{% endblock content %}

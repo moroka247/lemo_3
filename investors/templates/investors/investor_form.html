@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Add Investor
+{% endblock title %}
+
+{% block content %}
+<div class="container col-md-12  mt-3">
+    <h1 class="header my-3">Register A New Investor</h1>
+    <hr class="col-md-6">
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <div class="col-md-6">{{investor.name|as_crispy_field}}</div>
+        <div class="col-md-3 my-2">{{investor.short_name|as_crispy_field}}</div>
+        <div class="col-md-3 my-2">{{investor.reg_no|as_crispy_field}}</div>
+        <div class="col-md-3">{{investor.category|as_crispy_field}}</div>
+        <div class="col-md-6 my-2">{{investor.address|as_crispy_field}}</div>
+
+        <div class="col-md-3 my-2">{{investor.city|as_crispy_field}}</div>
+        <div class="col-md-1 my-2">{{investor.post_code|as_crispy_field}}</div>
+
+        <div class="col-md-3 my-2">{{investor.key_contact|as_crispy_field}}</div>
+        <div class="col-md-3 my-2">{{investor.phone|as_crispy_field}}</div>
+        <div class="col-md-3 my-2">{{investor.contact_email|as_crispy_field}}</div>
+
+        <div class="row my-6 mb-2 my-3">
+            <div class="col-md-6">
+                <button type="submit" value=" Submit" class="btn btn-success btn-md col-md-3"><i class="fas fa-save"></i>  Sumbit</button>
+                <a href="{% url 'investors:investors' %}" class="btn btn-secondary btn-block btn-md"><i class="fas fa-stream"></i> Back to investors</a> 
+            </div>
+        </div>
+
+    </form>
+
+</div>
+{% endblock content%}

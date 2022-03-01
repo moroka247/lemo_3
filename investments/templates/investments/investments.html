@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+Investments home
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-8"> <h5><b>INVESTMENTS</b></h5></div>
+    
+        <div align="right" class="col-md-4">        
+            <a href="{% url 'investments:investment_form' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-plus"> Add New</i>
+            </a>
+            <a href="{% url 'home:home' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
+                <i class="fas fa-home"> Home</i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container shadow">
+    <table class="table table-borderless table-hover" cellspacing="1px">
+        <thead class="border-bottom">
+            <tr class="" style="font-weight:bold">
+                <td>Company name</td>
+                <td>Fund name</td>
+                <td align="center">Instrument</td>
+                <td align="right">Committed</td>
+                <td align="right">Invested</td>
+                <td align="center">Perf. status</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for investment in investments %}
+                <tr class="border-bottom" onclick="window.location='{{investment.get_absolute_url}}';"  style="cursor: pointer;">
+                    <td>{{investment.inv_company}}</td>
+                    <td>{{investment.inv_fund}}</td>
+                    <td align="center">{{investment.inv_instrument}}</td>
+                    <td align="right">{{investment.inv_commitment}}</td>
+                    <td align="right">{{investment.inv_disbursed}}</td>
+                    <td align="center">{{investment.perf_status}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
