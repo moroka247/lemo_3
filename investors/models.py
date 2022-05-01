@@ -41,3 +41,10 @@ class investor_contact(models.Model):
     def __str__(self):
         return str(self.name)
 
+class investor_file(models.Model):
+    description = models.CharField(max_length=100)
+    inv_file = models.FileField(upload_to='investors/')
+    investor = models.ForeignKey(investor,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.description)

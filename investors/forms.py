@@ -1,5 +1,5 @@
 from django import forms
-from .models import investor, investor_contact
+from .models import investor, investor_contact, investor_file
 
 class InvestorForm(forms.ModelForm):
 
@@ -35,3 +35,9 @@ class ContactForm(forms.ModelForm):
         'inv_comm_rep':'Investement Committee Representative',
         'reports':'Receives Reports'
     }
+
+
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = investor_file
+        fields = ('description','inv_file','investor')

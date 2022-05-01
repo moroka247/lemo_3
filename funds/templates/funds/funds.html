@@ -11,9 +11,6 @@ Funds home
         <div class="col-md-8"> <h5><b>FUNDS</b></h5></div>
     
         <div align="right" class="col-md-4">        
-            <a href="{% url 'funds:fund_form' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
-                <i class="fas fa-plus"> Add New</i>
-            </a>
             <a href="{% url 'home:home' %}" class="btn btn-outline-success" style="height:30px;width:110px;padding:2px">
                 <i class="fas fa-home"> Home</i>
             </a>
@@ -22,8 +19,11 @@ Funds home
 </div>
 
 <div class="container shadow">
+    <a class="btn btn-success btn-sm btn-block mt-3 mb-3 col-12" href="{% url 'funds:fund_form' %}">
+        <i class="fas fa-plus"> Add New Fund</i>
+    </a>
 
-    <table class="table table-borderless table-hover" cellspacing="1px">
+    <table class="table table-borderless table-hover table-sm" cellspacing="1px">
         <thead class="border-bottom">
             <tr class="" style="font-weight:bold">
                 <td>Fund name</td>
@@ -33,6 +33,7 @@ Funds home
                 <td align="right">Undrawn</td>
                 <td align="right">Distributions</td>
                 <td align="center">Portf. Count</td>
+                <td align="center">Actions</td>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +47,10 @@ Funds home
                     <td align="right">{{fund.undrawn_capital}}</td>
                     <td align="right">{{fund.distributions}}</td>
                     <td align="center">{{fund.portfolio_count}}</td>
-                    <td></td>
+                    <td align="center">
+                        <a href="" class="btn btn-sm btn-success">Update</a>
+                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
                 </tr>
             {% endfor %}
         {% else %}
